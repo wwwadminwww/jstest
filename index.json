@@ -1,0 +1,69 @@
+{
+	"wigdets": [{
+		"type": "Critical",
+		"tyme": {
+			"bla-1": null,
+			"bla-2": [123, null, "null"],
+			"bla-3": 123123,
+			"bla-4": {
+		  		"bla-bla-bla-1": null,
+				"bla-bla-bla-2": [123, null, "null"],
+				"bla-bla-bla-3": 123123,
+			  	"bla-bla-bla-4": {
+				  	"alb-1": [null],
+				  	"alb-2": null,
+				  	"alb-3": "null",
+				  	"alb-4": [null],
+					"alb-5": null,
+				  	"alb-6": {
+						"alb-alb-1": null,
+					  	"alb-alb-2": "nulla",
+					}
+				}
+			}
+		},
+		"timeCreated": 1519370371619,
+		"name": "bla-bla-1",
+		"info1": "bla-bla-1",
+		"info2": [null, null],
+		"info3": null,
+		"info4": "bla-bla-1",
+		"info5": "bla-bla-1"
+	}, {
+		"type": "Major",
+		"target": "es5",
+		"timeCreated": 1519370405741,
+		"name": "bla-bla-2",
+		"info1": "bla-bla-2",
+		"info2": "bla-bla-2",
+		"info3": "bla-bla-2",
+		"info4": "bla-bla-2",
+		"info5": "bla-bla-2"
+	}, {
+		"type": "Major",
+		"target": "es5",
+		"timeCreated": 1519370426405,
+		"name": "bla-bla-3",
+		"info1": "bla-bla-3",
+		"info2": "bla-bla-3",
+		"bla-4": {
+		  		"bla-bla-bla-1": null,
+				"bla-bla-bla-4": [123, null, "null"],
+				"bla-bla-bla-3": "123123",
+			  	"bla-bla-bla-2": {
+				  	"alb-1": [null,123],
+				  	"alb-2": null,
+				  	"alb-3": "null",
+				  	"alb-4": [null,"123"],
+					"alb-5": "some",
+				  	"alb-6": {
+						"alb-alb-1": null,
+					  	"alb-alb-2": "nulla",
+					}
+				}
+			},
+	  	"info3": "bla-bla-3",
+		"info4": "bla-bla-3",
+		"info5": "bla-bla-3"
+	}]
+}
