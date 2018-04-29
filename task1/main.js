@@ -20,9 +20,7 @@ request.addEventListener('load',function () {
 run.addEventListener('click', function () {
     var count = 0;
     let changeNull = findNull(data);
-    // findCountOfNull(data);
-    checkNull(data['wigdets'], count);
-    console.log(count);
+    console.log(checkNull(data['wigdets']));
 })
 
 function findNull(arr){
@@ -39,37 +37,17 @@ function findNull(arr){
     return arr;
 }
 
-function findCountOfNull(arr) {
-    let count = 0;
-    arr = arr['wigdets'];
-    if (arr){
-        for (let i=0; i < arr.length; i++){
-            for (let key in arr[i]){
-                console.log(arr[i][key]);
-                if (arr[i][key] === null) count++;
-            }
-            // for (let j=0; j < arr[i].length; j++){
-            //     console.log(arr[i][j]);
-            //     if (Array.isArray(arr[i][j]) || typeof arr[i][j] === 'object'){
-            //         if (arr[i][j] === null) count++;
-            //     }
-            // }
-        }
-    }
-    console.log(count);
-
-    // return count;
-}
-
-function checkNull(data, counter){
-    console.log(data);
-    if (Array.isArray(data) || typeof data === 'object'){
+function checkNull(data){
+    var counter = 0;
+    // console.log(data);
+    if (data !== null && (Array.isArray(data) || typeof data === 'object')){
         for(let key in data){
-            checkNull(data[key], counter);
+            counter += checkNull(data[key]);
         }
     }else if(data == null) {
         counter++;
     }
+    return counter;
 }
 
 
