@@ -46,19 +46,20 @@ function replaceWords(data){
     let patterns = ['але', 'або','але або','або але'];
     let res = '';
     for(let i=0; i<patterns.length; i++){
-        data = data.replace(new RegExp('('+patterns[i]+')', 'g'), '<span style="color:red;">$1</span>');
+        data = data.replace(new RegExp('('+patterns[i]+')', 'g'), '<span style="color:' + setColor(patterns[i]) + ';">$1</span>');
     }
     // console.log(res);
     return data;
 }
 
 function setColor(word) {
-    let colorWord = document.createElement('span');
+    let color = '';
     switch(word){
-        case "але": red;
-        case "або": blue;
-        case 'але або': green;
-        case 'або але': brown;
-        default: return false;
+        case "але": color = 'red'; break;
+        case "або": color = 'blue'; break;
+        case 'але або': color = 'green'; break;
+        case 'або але': color = 'brown'; break;
+        default: color = 'black'; break;
     }
+    return color;
 }
