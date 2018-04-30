@@ -46,13 +46,13 @@ function replaceWords(data){
     let patterns = ['але', 'або','але або','або але'];
     let res = '';
     for(let i=0; i<patterns.length; i++){
-        data = data.replace(new RegExp('('+patterns[i]+')', 'g'), '<span style="color:' + setColor(patterns[i]) + ';">$1</span>');
+        data = data.replace(new RegExp('('+patterns[i]+')', 'g'), '<span style="color:' + getColor(patterns[i]) + ';">$1</span>');
     }
     // console.log(res);
     return data;
 }
 
-function setColor(word) {
+function getColor(word) {
     let color = '';
     switch(word){
         case "але": color = 'red'; break;
