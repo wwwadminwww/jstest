@@ -15,13 +15,17 @@ request.addEventListener('load',function () {
     }else{
         console.error('Something go wrong!!!');
     }
-})
+});
 
 run.addEventListener('click', function () {
     var count = 0;
     let changeNull = findNull(data);
-    console.log(checkNull(data['wigdets']));
-})
+    let countOfNull = checkNull(data['wigdets']);
+    console.log('Modified JSON:', changeNull);
+    console.log('Count of elements with value null in internal arrays or objects is: ' + countOfNull);
+    result.innerHTML = 'Modified JSON<br>' + JSON.stringify(changeNull, null, 2) + '<br>';
+    result.innerHTML += 'Count of elements with value null in internal arrays or objects is: ' + countOfNull;
+});
 
 function findNull(arr){
     if (arr['wigdets']){

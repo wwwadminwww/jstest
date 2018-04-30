@@ -5,12 +5,12 @@ var text = document.getElementById('text');
 text.addEventListener('keyup', function () {
     this.innerHTML = replaceWords(this.innerText);
     console.log(replaceWords(this.innerText));
-    console.log(replaceWords('лолвтаолваалетотолвтав'));
+    // console.log(replaceWords('лолвтаолваалетотолвтав'));
 })
 
 
 
-function checkText(data) {
+/*function checkText(data) {
     var patterns = ['але', 'або','але або','або але'];
     // var patterns = ['was'];
 
@@ -28,19 +28,7 @@ function checkText(data) {
             }
         }
     }
-}
-
-function checkText2(data){
-    let patterns = ['але', 'або','але або','або але'];
-    let pos = 0;
-
-    while(true){
-        let foundPos = data.indexOf(data, pos);
-        if(foundPos == -1) break;
-        pos = foundPos + 1;
-    }
-
-}
+}*/
 
 function replaceWords(data){
     let patterns = ['але', 'або','але або','або але'];
