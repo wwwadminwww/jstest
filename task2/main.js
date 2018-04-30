@@ -46,7 +46,7 @@ function replaceWords(data){
     let patterns = ['але', 'або','але або','або але'];
     let res = '';
     for(let i=0; i<patterns.length; i++){
-        data = data.replace(new RegExp(patterns[i], 'g'), '<span style="color:red;">' + patterns[i] + '</span>');
+        data = data.replace(new RegExp('('+patterns[i]+')', 'g'), '<span style="color:red;">$1</span>');
     }
     // console.log(res);
     return data;
