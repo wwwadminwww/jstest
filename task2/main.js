@@ -4,43 +4,30 @@ var text = document.getElementById('text');
 
 text.addEventListener('keyup', function () {
     this.innerHTML = replaceWords(this.innerText);
+    console.log(text);
     console.log(replaceWords(this.innerText));
     // console.log(replaceWords('лолвтаолваалетотолвтав'));
 })
 
-
-
-/*function checkText(data) {
-    var patterns = ['але', 'або','але або','або але'];
-    // var patterns = ['was'];
-
-    for (var i = 0; i < patterns.length; i++){
-        for (var j = 0; j < data.length; j++){
-            var temp = '';
-            for (var k = 0; k < patterns[i].length; k++){
-                if (patterns[i][k] === data[j + k]){
-                    temp += data[j+k];
-                    if (patterns[i] === temp) {
-                        console.log(patterns[i] + ' ' + j);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-}*/
-
 function replaceWords(data){
-    let patterns = ['але', 'або','але або','або але'];
-    let res = '';
+    // але привет або але, але або, привіт або пока але
+    let patterns = ['але або','або але','але','або'];
     for(let i=0; i<patterns.length; i++){
-        data = data.replace(new RegExp('('+patterns[i]+')', 'g'), '<span style="color:' + getColor(patterns[i]) + ';">$1</span>');
+        data = data.replace(new RegExp('('+patterns[i]+')', 'gm'), '{['+i+']}');
     }
-    // console.log(res);
+
+    for(let j=0; j<patterns.length; j++){
+        // let pat = new RegExp("\{\["+j+"\]\}", 'gm');
+        let pat = "{["+j+"]}";
+        do {
+            data = data.replace(pat, getColorWord(patterns[j]));
+        }while (data.indexOf(pat) >= 0);
+    }
+
     return data;
 }
 
-function getColor(word) {
+function getColorWord(word) {
     let color = '';
     switch(word){
         case "але": color = 'red'; break;
@@ -49,5 +36,5 @@ function getColor(word) {
         case 'або але': color = 'brown'; break;
         default: color = 'black'; break;
     }
-    return color;
+    return '<span style="color:' + color + ';">' + word + '</span>';
 }
