@@ -8,7 +8,6 @@ text.addEventListener('keyup',  function() {
 })
 
 function replaceWords(data){
-    // але привет або але, але або, привіт або пока але
     let patterns = ['але або','або але','але','або'];
     for(let i=0; i<patterns.length; i++){
         data = data.replace(new RegExp('('+patterns[i]+')', 'gm'), '{['+i+']}');
