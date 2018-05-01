@@ -1,12 +1,10 @@
 'use strict';
 
 var text = document.getElementById('text');
+var res = document.getElementById('res');
 
-text.addEventListener('keyup', function () {
-    this.innerHTML = replaceWords(this.innerText);
-    console.log(text);
-    console.log(replaceWords(this.innerText));
-    // console.log(replaceWords('лолвтаолваалетотолвтав'));
+text.addEventListener('keyup',  function() {
+    res.innerHTML = replaceWords(this.value);
 })
 
 function replaceWords(data){
@@ -17,7 +15,6 @@ function replaceWords(data){
     }
 
     for(let j=0; j<patterns.length; j++){
-        // let pat = new RegExp("\{\["+j+"\]\}", 'gm');
         let pat = "{["+j+"]}";
         do {
             data = data.replace(pat, getColorWord(patterns[j]));
