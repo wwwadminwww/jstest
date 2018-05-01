@@ -23,8 +23,8 @@ run.addEventListener('click', function () {
     let countOfNull = checkNull(data['wigdets']);
     console.log('Modified JSON:', changeNull);
     console.log('Count of elements with value null in internal arrays or objects is: ' + countOfNull);
-    result.innerHTML = 'Modified JSON<br>' + JSON.stringify(changeNull, null, 2) + '<br>';
-    result.innerHTML += 'Count of elements with value null in internal arrays or objects is: ' + countOfNull;
+    result.innerHTML = 'Modified JSON<br>' + JSON.stringify(changeNull, null, 2) + '<br><br>';
+    result.innerHTML += 'Кількість елементів із значенням null: ' + countOfNull;
 });
 
 function findNull(arr){
