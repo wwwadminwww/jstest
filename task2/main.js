@@ -1,11 +1,13 @@
 'use strict';
 
 var text = document.getElementById('text');
-var res = document.getElementById('res');
 
 text.addEventListener('keyup',  function() {
-    res.innerHTML = replaceWords(this.value);
-})
+    setTimeout(function () {
+        text.innerHTML = replaceWords(text.innerText);
+        setCaret(text);
+    }, 2000);
+});
 
 function replaceWords(data){
     let patterns = ['але або','або але','але','або'];
@@ -15,9 +17,9 @@ function replaceWords(data){
 
     for(let j=0; j<patterns.length; j++){
         let pat = "{["+j+"]}";
-        do {
+        while (data.indexOf(pat) >= 0) {
             data = data.replace(pat, getColorWord(patterns[j]));
-        }while (data.indexOf(pat) >= 0);
+        }
     }
 
     return data;
@@ -33,4 +35,15 @@ function getColorWord(word) {
         default: color = 'black'; break;
     }
     return '<span style="color:' + color + ';">' + word + '</span>';
+}
+
+function setCaret(el) {
+    var range = document.createRange();
+    var endNode = el.lastChild;
+    range.selectNodeContents(endNode);
+    range.setStart(endNode, range.endOffset);
+    range.setEnd(endNode, range.endOffset);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
 }

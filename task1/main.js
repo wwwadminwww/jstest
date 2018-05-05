@@ -18,16 +18,19 @@ request.addEventListener('load',function () {
 });
 
 run.addEventListener('click', function () {
-    var count = 0;
-    let changeNull = findNull(data);
-    let countOfNull = checkNull(data['wigdets']);
-    console.log('Modified JSON:', changeNull);
-    console.log('Count of elements with value null in internal arrays or objects is: ' + countOfNull);
-    result.innerHTML = 'Modified JSON<br>' + JSON.stringify(changeNull, null, 2) + '<br><br>';
-    result.innerHTML += 'Кількість елементів із значенням null: ' + countOfNull;
+    if (data) {
+        let changeNull = changeNullValue(data);
+        let countOfNull = findCountOfNull(data['wigdets']);
+        console.log('Modified JSON:', changeNull);
+        console.log('Count of elements with value null in internal arrays or objects is: ' + countOfNull);
+        result.innerHTML = 'Modified JSON<br>' + JSON.stringify(changeNull, null, 2) + '<br><br>';
+        result.innerHTML += 'Кількість елементів із значенням null: ' + countOfNull;
+    }else{
+        result.innerHTML = "Виникла проблема під час отримання даних";
+    }
 });
 
-function findNull(arr){
+function changeNullValue(arr){
     if (arr['wigdets']){
         arr['wigdets'].map(function (e) {
             for(let key in e){
@@ -41,12 +44,12 @@ function findNull(arr){
     return arr;
 }
 
-function checkNull(data){
+function findCountOfNull(data){
     var counter = 0;
     // console.log(data);
     if (data !== null && (Array.isArray(data) || typeof data === 'object')){
         for(let key in data){
-            counter += checkNull(data[key]);
+            counter += findCountOfNull(data[key]);
         }
     }else if(data == null) {
         counter++;
