@@ -6,7 +6,7 @@ text.addEventListener('keyup',  function() {
     setTimeout(function () {
         text.innerHTML = replaceWords(text.innerText);
         setCaret(text);
-    }, 2000);
+    }, 1000);
 });
 
 function replaceWords(data){
