@@ -1,16 +1,26 @@
 'use strict';
 
 var text = document.getElementById('text');
+var res = document.getElementById('res');
+var text2 = document.getElementById('text2');
 
-text.addEventListener('keyup',  function() {
-    setTimeout(function () {
-        text.innerHTML = replaceWords(text.innerText);
-        setCaret(text);
-    }, 1000);
+text2.addEventListener('keyup',  function() {
+    res.innerHTML = `<pre>${replaceWords(this.value)}</pre>`;
+    res.appendChild(text2);
+    requestAnimationFrame(function () {
+        text2.focus();
+    })
+    // setTimeout(function () {
+    //     text.innerHTML = replaceWords(text.innerText);
+    //     setCaret(text);
+    // }, 50);
 });
 
 function replaceWords(data){
     let patterns = ['але або','або але','але','або'];
+    while (data.indexOf('&nbsp;') >= 0) {
+        data = data.replace('&nbsp;', ' ');
+    }
     for(let i=0; i<patterns.length; i++){
         data = data.replace(new RegExp('('+patterns[i]+')', 'gm'), '{['+i+']}');
     }
